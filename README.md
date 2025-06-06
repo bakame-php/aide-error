@@ -2,10 +2,6 @@
 
 A Cloak system to help dealing with error reporting in PHP.
 
-> [!CAUTION]  
-> Sub-split of Aide for Error.  
-> ⚠️ this is a sub-split, for pull requests and issues, visit: https://github.com/bakame-php/aide
-
 ## Installation
 
 ### Composer
@@ -31,7 +27,7 @@ The `Bakame\Aide\Error\Cloak` utility class helps you remove that burden by doin
 ```php
 <?php
 
-use Bakame\Aide\Error\Cloak;
+use Bakame\Aide\Error\src\Cloak;
 
 //using the @ suppression operator
 $res = @touch('/foo'); // bad and not recommended
@@ -65,7 +61,7 @@ You can control its behaviour on your global codebase
 ```php
 <?php
 
-use Bakame\Aide\Error\Cloak;
+use Bakame\Aide\Error\src\Cloak;
 
 Cloak::throwOnError();
 
@@ -80,7 +76,7 @@ Or you can decide to specifically change its default behaviour for a specific ca
 ```php
 <?php
 
-use Bakame\Aide\Error\Cloak;
+use Bakame\Aide\Error\src\Cloak;
 
 Cloak::throwOnError(); // by default calls via Cloak should throw
 
@@ -137,7 +133,7 @@ To ease usage the named constructors are added:
 
 ```php
 <?php
-use Bakame\Aide\Error\Cloak;
+use Bakame\Aide\Error\src\Cloak;
 
 Cloak::env(); // will use the current environment error reporting value
 // and one for each error reporting level that exists in PHP
@@ -171,7 +167,7 @@ as shown below:
 
 ```php
 <?php
-use Bakame\Aide\Error\Cloak;
+use Bakame\Aide\Error\src\Cloak;
 
 $touch = new Cloak(
     touch(...),
@@ -188,8 +184,7 @@ approach to deal with them. As an example, the previous code example can be rewr
 
 ```php
 <?php
-use Bakame\Aide\Error\Cloak;
-use Bakame\Aide\Error\ReportingLevel;
+use Bakame\Aide\Error\src\Cloak;use Bakame\Aide\Error\src\ReportingLevel;
 
 $touch = new Cloak(
     touch(...),
@@ -211,7 +206,7 @@ on top of that the class expose a construct for each error reporting level using
 
 ```php
 
-use Bakame\Aide\Error\ReportingLevel;
+use Bakame\Aide\Error\src\ReportingLevel;
 
 ReportingLevel::warning()->value(); // returns the same value as E_WARNING.
 ReportingLevel::userDeprecated()->value(); // returns the same value as E_USER_DEPRECATED.
@@ -225,7 +220,7 @@ error reporting level names.
 ```php
 <?php
 
-use Bakame\Aide\Error\ReportingLevel;
+use Bakame\Aide\Error\src\ReportingLevel;
 
 ReportingLevel::fromEnv()->contains(E_WARNING);
 // returns true if the current value in error_reporting contains `E_WARNING`
